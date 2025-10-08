@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:furnitures_app/data.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CategoryWidget extends StatelessWidget {
-  final Map category;
+  final CategoryModel category;
   final bool? isSelected;
 
   const CategoryWidget({super.key, required this.category, this.isSelected});
@@ -18,7 +20,7 @@ class CategoryWidget extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(5.0),
             child: Image.asset(
-              category['icon']!,
+              category.icon,
               height: 40,
             ),
           ),
@@ -27,8 +29,8 @@ class CategoryWidget extends StatelessWidget {
           height: 8,
         ),
         Text(
-          category['name']!,
-          style: const TextStyle(
+          category.name,
+          style:  GoogleFonts.poppins(
               fontSize: 12, color: Colors.white, fontWeight: FontWeight.w500),
         ),
         const SizedBox(

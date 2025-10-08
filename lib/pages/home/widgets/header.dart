@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Header extends StatelessWidget {
   const Header({
@@ -30,17 +30,17 @@ class Header extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
+            Text(
               "Decoration",
-              style: TextStyle(
+              style: GoogleFonts.poppins(
                   fontSize: 18,
                   height: 0.8,
                   color: Colors.black,
-                  fontWeight: FontWeight.bold),
+                  fontWeight: FontWeight.w600),
             ),
-            const Text(
+            Text(
               "Room",
-              style: TextStyle(
+              style: GoogleFonts.poppins(
                   fontSize: 16,
                   color: Colors.black,
                   fontWeight: FontWeight.w400),

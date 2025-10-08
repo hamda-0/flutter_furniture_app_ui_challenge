@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:furnitures_app/data.dart';
 
 class ProductCard extends StatelessWidget {
-  final Map product;
+  final ProductModel product;
 
   const ProductCard({super.key, required this.product});
   @override
@@ -14,11 +15,11 @@ class ProductCard extends StatelessWidget {
           borderRadius: const BorderRadius.all(
             Radius.circular(15.0),
           ),
-          color: product['color'] as Color,
+          color: product.color,
         ),
         child: Center(
           child: Image.asset(
-            product['image'] as String,
+            product.image,
           ),
         ),
       ),

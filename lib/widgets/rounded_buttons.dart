@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class RoundedButtons extends StatelessWidget {
   const RoundedButtons({
@@ -12,8 +13,8 @@ class RoundedButtons extends StatelessWidget {
       children: [
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-              primary: Colors.white,
-              onPrimary: Colors.black,
+              backgroundColor: Colors.black,
+              foregroundColor: Colors.white,
               minimumSize: const Size(110, 38),
               padding: const EdgeInsets.symmetric(horizontal: 22),
               shape: const RoundedRectangleBorder(
@@ -21,9 +22,9 @@ class RoundedButtons extends StatelessWidget {
               ),
               elevation: 0.5),
           onPressed: () {},
-          child: const Text(
+          child:  Text(
             'Add to Cart',
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+            style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w500),
           ),
         ),
         const SizedBox(
@@ -38,9 +39,9 @@ class RoundedButtons extends StatelessWidget {
               ),
               elevation: 0.5),
           onPressed: () {},
-          child: const Text(
+          child:  Text(
             'Buy Now',
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+            style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w500),
           ),
         ),
       ],

@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ProductInfo extends StatelessWidget {
   const ProductInfo({
@@ -10,16 +11,16 @@ class ProductInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Text(
+         Text(
           "Bosnas Posna",
-          style: TextStyle(
+          style: GoogleFonts.poppins(
               fontSize: 20,
               color: Colors.black,
               fontWeight: FontWeight.w600),
         ),
         Text(
           "Footstool with storage, Ransta",
-          style: TextStyle(
+          style: GoogleFonts.poppins(
               fontSize: 14,
               color: Colors.grey[600],
               fontWeight: FontWeight.normal),
@@ -27,12 +28,12 @@ class ProductInfo extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        const Text(
-          "124\$",
-          style: TextStyle(
+         Text(
+          "\$124",
+          style: GoogleFonts.poppins(
               fontSize: 24,
               color: Colors.black,
-              fontWeight: FontWeight.bold),
+              fontWeight: FontWeight.w700),
         ),
       ],
     );

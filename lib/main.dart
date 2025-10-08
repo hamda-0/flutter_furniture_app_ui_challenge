@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:furnitures_app/const.dart';
-import 'package:furnitures_app/home_page.dart';
+import 'package:flutter/services.dart';
+import 'package:furnitures_app/pages/home/home_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+      overlays: [SystemUiOverlay.bottom]);
   runApp(const MyApp());
 }
 
@@ -15,23 +19,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Furnitures App',
       theme: ThemeData(
-        primarySwatch: MaterialColor(
-          primaryColor,
-          <int, Color>{
-            50: const Color(primaryColor).withOpacity(0.1),
-            100: const Color(primaryColor).withOpacity(0.2),
-            200: const Color(primaryColor).withOpacity(0.3),
-            300: const Color(primaryColor).withOpacity(0.4),
-            400: const Color(primaryColor).withOpacity(0.5),
-            500: const Color(primaryColor).withOpacity(0.6),
-            600: const Color(primaryColor).withOpacity(0.7),
-            700: const Color(primaryColor).withOpacity(0.8),
-            800: const Color(primaryColor).withOpacity(0.9),
-            900: const Color(primaryColor).withOpacity(1.0),
-          },
-        ),
-        fontFamily: 'Poppins',
-      ),
+          primaryColor: const Color(0xFF5245FE),
+          // fontFamily: 'Poppins',
+          textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)),
       home: const HomePage(),
     );
   }

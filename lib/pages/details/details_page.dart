@@ -2,11 +2,12 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-import 'package:furnitures_app/const.dart';
-import 'package:furnitures_app/widgets/back_icon_button.dart';
+import 'package:furnitures_app/data.dart';
+import 'package:furnitures_app/pages/details/widgets/back_icon_button.dart';
 import 'package:furnitures_app/widgets/category_widget.dart';
-import 'package:furnitures_app/widgets/product_info.dart';
+import 'package:furnitures_app/pages/details/widgets/product_info.dart';
 import 'package:furnitures_app/widgets/rounded_buttons.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class DetailsPage extends StatefulWidget {
   final Offset catListOffset;
@@ -119,7 +120,7 @@ class _DetailsPageState extends State<DetailsPage>
         child: Stack(
           children: [
             TweenAnimationBuilder<double>(
-                duration: const Duration(milliseconds: 600),
+                duration: const Duration(milliseconds: 200),
                 tween: Tween(begin: 1, end: 0),
                 builder: (context, double value, _) {
                   return Hero(
@@ -134,7 +135,7 @@ class _DetailsPageState extends State<DetailsPage>
                         ),
                       ));
                 }),
-            const BackIconButton(),
+            const Positioned(top: 10, child: BackIconButton()),
             Positioned(
               top: 80,
               child: categoryWithoutTag(),
@@ -149,8 +150,8 @@ class _DetailsPageState extends State<DetailsPage>
               left: 0,
               bottom: 0,
               child: SlideInUp(
-                delay: const Duration(milliseconds: 1200),
-                duration: const Duration(milliseconds: 600),
+                delay: const Duration(milliseconds: 300),
+                duration: const Duration(milliseconds: 500),
                 from: MediaQuery.of(context).size.height,
                 child: Stack(
                   children: [
@@ -185,8 +186,8 @@ class _DetailsPageState extends State<DetailsPage>
                                   ),
                                   ScaleTransition(
                                     scale: Tween<double>(
-                                      begin: 1.0,
-                                      end: 1.2,
+                                      begin: 1,
+                                      end: 1.4,
                                     ).animate(_imagePulseController),
                                     child: GestureDetector(
                                       onLongPressStart: _onLongPressStart,
@@ -197,7 +198,7 @@ class _DetailsPageState extends State<DetailsPage>
                                         height: 150,
                                         width: 150,
                                         child: Image.asset(
-                                          "assets/images/box_colors/${colors[selectedColor]['colorName']}.png",
+                                          "assets/images/box_colors/${colorOptions[selectedColor].colorName}.png",
                                           key: imageKey,
                                         ),
                                       ),
@@ -210,7 +211,7 @@ class _DetailsPageState extends State<DetailsPage>
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      for (var i = 0; i < colors.length; i++)
+                                      for (var i = 0; i < colorOptions.length; i++)
                                         Radio(
                                           value: i,
                                           groupValue: selectedColor,
@@ -218,7 +219,7 @@ class _DetailsPageState extends State<DetailsPage>
                                             _imagePulseController.forward();
                                             Future.delayed(
                                                 const Duration(
-                                                    milliseconds: 200), () {
+                                                    milliseconds: 100), () {
                                               _imagePulseController.reverse();
                                               setState(() {
                                                 selectedColor = value!;
@@ -226,11 +227,11 @@ class _DetailsPageState extends State<DetailsPage>
                                             });
                                           },
                                           fillColor:
-                                              MaterialStateColor.resolveWith(
-                                                  (states) => colors[i]["color"]
-                                                      as Color),
+                                              WidgetStateColor.resolveWith(
+                                                  (states) => colorOptions[i].color
+                                                      ),
                                           activeColor:
-                                              colors[i]["color"] as Color,
+                                              colorOptions[i].color,
                                         ),
                                     ],
                                   ),
@@ -306,7 +307,7 @@ class _DetailsPageState extends State<DetailsPage>
                                     child: Center(
                                       child: Text(
                                         qty.toString(),
-                                        style: const TextStyle(
+                                        style:  GoogleFonts.poppins(
                                             fontSize: 10,
                                             color: Colors.white,
                                             fontWeight: FontWeight.w600),
@@ -329,7 +330,7 @@ class _DetailsPageState extends State<DetailsPage>
                           height: (150 - targetDistance).abs(),
                           width: (150 - targetDistance).abs(),
                           child: Image.asset(
-                            "assets/images/box_colors/${colors[selectedColor]['colorName']}.png",
+                            "assets/images/box_colors/${colorOptions[selectedColor].colorName}.png",
                           ),
                         ),
                       ),
@@ -384,7 +385,7 @@ class _DetailsPageState extends State<DetailsPage>
         itemBuilder: (BuildContext context, int index) {
           return SlideInUp(
             key: Key(index.toString()),
-            delay: Duration(milliseconds: 200 + (100 * index)),
+            delay: Duration(milliseconds:  (100 * index)),
             from: widget.catListOffset.dy - 80,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
